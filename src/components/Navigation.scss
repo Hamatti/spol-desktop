@@ -1,0 +1,37 @@
+nav {
+  ul {
+    list-style: none;
+    margin: auto;
+    margin-block-start: 0;
+
+    li {
+      margin-top: 1em;
+      padding: 1em;
+      background-color: black;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+
+      &:focus-within {
+        outline: 5px solid orange;
+      }
+
+      &:hover {
+        background-color: #ccc;
+      }
+    }
+  }
+
+  a,
+  a:visited {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  a:focus {
+    text-decoration: none;
+    border: none;
+    outline: none;
+  }
+}

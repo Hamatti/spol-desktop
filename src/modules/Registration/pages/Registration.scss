@@ -1,0 +1,46 @@
+table.registration {
+  width: 100%;
+  text-align: center;
+  margin-top: 2em;
+
+  td {
+    padding: 0.2em 0;
+  }
+
+  td:first-child {
+    text-align: left;
+  }
+
+  .add-player-row > td {
+    border-top: 2px solid black;
+    padding-top: 1em;
+  }
+
+  .add-player-row input {
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  .custom-checkbox {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    margin: auto;
+    width: 40px;
+  }
+
+  .hidden-checkbox:checked ~ .custom-checkbox {
+    background-color: greenyellow;
+  }
+}
+
+.filter {
+  label {
+    margin-right: 0.5em;
+  }
+}

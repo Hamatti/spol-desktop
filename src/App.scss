@@ -1,0 +1,37 @@
+.App {
+  display: grid;
+  grid-template-areas: "header header header header" "navigation content content content" "footer footer footer footer";
+}
+
+header {
+  width: 100%;
+  grid-area: header;
+  text-align: center;
+  background: rgb(34, 51, 119);
+  color: white;
+  padding-bottom: 20px;
+}
+
+nav {
+  grid-area: navigation;
+  background: rgb(34, 51, 119);
+  color: white;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+main {
+  grid-area: content;
+  margin: 2em 10%;
+}
+
+footer {
+  grid-area: footer;
+  background: rgb(34, 51, 119);
+  color: white;
+  padding-top: 20px;
+}
+
+.clear {
+  clear: both;
+}

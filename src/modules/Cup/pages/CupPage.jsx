@@ -5,6 +5,7 @@ import Popup from "reactjs-popup";
 import "./Cup.scss";
 
 import { createRound } from "utils/cup";
+import { confirm } from "utils/dialog";
 import { CUP } from "utils/filesystem";
 
 const fakePlayers = ["James", "Mike", "Gary", "Will", "Sandy"];
@@ -88,30 +89,37 @@ class CupPage extends Component {
     });
   };
 
-  editRound = roundNro => {
-    //TODO: Add an alert prompt
-    const { rounds } = this.state;
-    const pastRounds = Object.keys(rounds).filter(round => round > roundNro);
+  editRound = (ev, roundNro) => {
+    const confirmation = confirm(
+      "Aiemman kierroksen tulosten muuttaminen poistaa kaikki sitä seuraavat kierrokset. Oletko varma, että haluat jatkaa?"
+    );
 
-    pastRounds.forEach(roundIdx => {
-      delete rounds[roundIdx];
-    });
+    if (confirmation === 0) {
+      const { rounds } = this.state;
+      const pastRounds = Object.keys(rounds).filter(round => round > roundNro);
 
-    const currentRound =
-      rounds[Object.keys(rounds).filter(round => round === roundNro)[0]];
+      pastRounds.forEach(roundIdx => {
+        delete rounds[roundIdx];
+      });
 
-    currentRound.frozen = false;
+      const currentRound =
+        rounds[Object.keys(rounds).filter(round => round === roundNro)[0]];
 
-    currentRound.games.forEach(game => {
-      game.frozen = false;
-    });
+      currentRound.frozen = false;
 
-    this.setState({
-      rounds: {
-        ...rounds,
-        [roundNro]: currentRound
-      }
-    });
+      currentRound.games.forEach(game => {
+        game.frozen = false;
+      });
+
+      this.setState({
+        rounds: {
+          ...rounds,
+          [roundNro]: currentRound
+        }
+      });
+    } else {
+      ev.preventDefault();
+    }
   };
 
   isValidResult = result => {
@@ -248,7 +256,6 @@ class CupPage extends Component {
                         ))}
                       </tbody>
                     </table>
-
                     <button
                       onClick={() => this.saveRoundResults(roundNro)}
                       disabled={
@@ -258,7 +265,7 @@ class CupPage extends Component {
                       Tallenna
                     </button>
                     <button
-                      onClick={() => this.editRound(roundNro)}
+                      onClick={ev => this.editRound(ev, roundNro)}
                       disabled={!round.frozen}
                     >
                       Muokkaa

@@ -7,7 +7,7 @@ import "./Cup.scss";
 import { createRound } from "utils/cup";
 import { CUP } from "utils/filesystem";
 
-const fakePlayers = ["James", "Mike"]; //, "Gary", "Will", "Sandy"];
+const fakePlayers = ["James", "Mike", "Gary", "Will", "Sandy"];
 const STARTING_ROUND = 1;
 
 const Card = ({ title }) => (
@@ -248,6 +248,7 @@ class CupPage extends Component {
                         ))}
                       </tbody>
                     </table>
+
                     <button
                       onClick={() => this.saveRoundResults(roundNro)}
                       disabled={
@@ -276,7 +277,9 @@ class CupPage extends Component {
           })}
         <div className="output">
           <button onClick={() => this.saveHTML()}>Tallenna HTML</button>
+          <div className="clear" />
           <button onClick={() => this.saveJSON()}>Tallenna cup-tiedosto</button>
+          <div className="clear" />
           {this.state.fileSaveMessage ? this.state.fileSaveMessage : null}
         </div>
       </div>

@@ -5,8 +5,9 @@ import Popup from "reactjs-popup";
 import "./Cup.scss";
 
 import { createRound } from "utils/cup";
+import { CUP } from "utils/filesystem";
 
-const fakePlayers = ["James", "Mike", "Gary", "Will", "Sandy"];
+const fakePlayers = ["James", "Mike"]; //, "Gary", "Will", "Sandy"];
 const STARTING_ROUND = 1;
 
 const Card = ({ title }) => (
@@ -27,13 +28,40 @@ class CupPage extends Component {
     super();
     this.state = {
       originalPlayers: fakePlayers,
-      rounds: {}
+      rounds: {},
+      fileSaveMessage: null
     };
   }
 
   componentDidMount() {
     this.createRound(this.state.originalPlayers, STARTING_ROUND);
   }
+
+  saveHTML = () => {
+    const { saveLocation, error } = CUP.saveHTML(this.state.rounds);
+    if (saveLocation) {
+      this.setState({
+        fileSaveMessage: `Tiedosto tallennettu onnistuneesti kohteeseen ${saveLocation}.html`
+      });
+    } else if (error) {
+      this.setState({
+        fileSaveMessage: `Tiedoston tallentaminen epäonnistui`
+      });
+    }
+  };
+
+  saveJSON = () => {
+    const { saveLocation, error } = CUP.saveJSON(this.state.rounds);
+    if (saveLocation) {
+      this.setState({
+        fileSaveMessage: `Tiedosto tallennettu onnistuneesti kohteeseen ${saveLocation}.cup`
+      });
+    } else if (error) {
+      this.setState({
+        fileSaveMessage: `Tiedoston tallentaminen epäonnistui`
+      });
+    }
+  };
 
   createRound = (players, roundNro) => {
     const { games, byes } = createRound(players);
@@ -246,6 +274,11 @@ class CupPage extends Component {
               );
             }
           })}
+        <div className="output">
+          <button onClick={() => this.saveHTML()}>Tallenna HTML</button>
+          <button onClick={() => this.saveJSON()}>Tallenna cup-tiedosto</button>
+          {this.state.fileSaveMessage ? this.state.fileSaveMessage : null}
+        </div>
       </div>
     );
   }

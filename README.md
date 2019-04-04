@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SPOL Desktop (working title)
 
-## Available Scripts
+_This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [Electron](https://electronjs.org/) for desktop apps._
 
-In the project directory, you can run:
+This project is an Electron app for FTHA to manage registrations, run tournaments (regular ranking, cup, team) and sync everything to server.
 
-### `npm start`
+## How to run
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Clone this project and run
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+`npm install`
 
-### `npm test`
+to install required packages.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After that, you can start the Electron app (/w hot reload!) with
 
-### `npm run build`
+`npm run electron-dev`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+or run tests with
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+`npm test`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Tests should live in `src/tests` and be named as `[something].test.js`.
 
-### `npm run eject`
+## Eventually there will be...
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Token-based authentication
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The user will start the application usage by providing an authentication token that will be used to auth with server and decide which features are available.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Registration
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Easy-to-use registration for multiple series, including option to download membership data (for different pricing), seeded ranking data, or use pre-registration data to speed things up.
 
-## Learn More
+### Ranking tournament results
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+A replacement for current peli.jar. The idea is that you can run everything inside this. Automatically get player lists from registration module into tournaments and auto-advance from basic groups to division/final groups and playoffs.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Cup
 
-### Code Splitting
+Run single-elimination cup tournaments with seeded or randomized order.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Team Tournament
 
-### Analyzing the Bundle Size
+Run a team tournament with detailed results for each game.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Help / Manual
 
-### Making a Progressive Web App
+Built-in manual to help with common challenges.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Local & Cloud Save
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Automatically save changes to server for live results and keep backups on your own computer

@@ -215,7 +215,7 @@ class CupPage extends Component {
                       jatkoon
                       <Popup
                         trigger={<FaInfoCircle />}
-                        position="left center"
+                        position="right center"
                         on="hover"
                       >
                         <Card title="Tasoituskierros" />

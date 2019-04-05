@@ -24,7 +24,7 @@
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "react-scripts build && electron-builder"
   },
   "homepage": "./",
   "eslintConfig": {

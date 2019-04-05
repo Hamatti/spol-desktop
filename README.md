@@ -22,6 +22,10 @@ or run tests with
 
 Tests should live in `src/tests` and be named as `[something].test.js`.
 
+To build a dmg that can be run in production, run
+
+`npm run dist`
+
 ## Eventually there will be...
 
 ### Token-based authentication
